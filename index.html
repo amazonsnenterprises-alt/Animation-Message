@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruksar ❤️</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fecfef);
+overflow:hidden;
+text-align:center;
+}
+
+/* main box */
+
+.container{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+max-width:350px;
+width:90%;
+z-index:2;
+}
+
+h1{
+color:#ff3e6c;
+}
+
+#typing{
+font-size:20px;
+margin-bottom:25px;
+min-height:60px;
+}
+
+/* buttons */
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
+}
+
+#yes{
+background:#ff3e6c;
+color:white;
+}
+
+#no{
+background:black;
+color:white;
+position:absolute;
+}
+
+/* hearts */
+
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh) scale(1);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh) scale(1.5);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Ruksar ❤️</h1>
+
+<div id="typing"></div>
+
+<button id="yes">Yes</button>
+<button id="no">No</button>
+
+</div>
+
+<script>
+
+/* typing text */
+
+const text =
+"Meri Gileri 💖 Meri Rani Sa 👑 Meri Malkin ❤️\n\nWill you be mine forever?";
+
+let i = 0;
+
+function typing(){
+
+if(i < text.length){
+
+document.getElementById("typing").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(typing,50);
+
+}
+
+}
+
+typing();
+
+/* NO button run away */
+
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover",function(){
+
+let x = Math.random()*window.innerWidth;
+let y = Math.random()*window.innerHeight;
+
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
+
+});
+
+/* yes click */
+
+document.getElementById("yes").onclick=function(){
+
+alert("Ruksar ❤️\n\nAb tum officially meri ho 😍");
+
+}
+
+/* floating hearts */
+
+function createHeart(){
+
+const heart = document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left = Math.random()*100+"vw";
+
+heart.style.fontSize = Math.random()*20+20+"px";
+
+heart.style.animationDuration = Math.random()*3+3+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6000)
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
